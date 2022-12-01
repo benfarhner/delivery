@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="materialPrimary">
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="settingsForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label stacked>Delivery Comp</ion-label>
+          <ion-input type="number" placeholder="0.00" formControlName="driverComp" [(ngModel)]="settings.driverComp"></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-label stacked>Driver Bank</ion-label>
+          <ion-input type="number" placeholder="0.00" formControlName="driverBank" [(ngModel)]="settings.driverBank"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="danger" icon-left><ion-icon name="md-trash"></ion-icon>Clear Data</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

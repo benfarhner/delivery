@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="materialPrimary">
+    <ion-title>Shift</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <fmc-announcement icon-name="md-time" icon-color="materialPrimaryDark" text="You're off the clock!"></fmc-announcement>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab right bottom padding>
+    <button ion-fab (click)="startShift()" color="materialSecondary"><ion-icon name="md-add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

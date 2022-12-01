@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="materialPrimary">
+    <ion-title>Clocking Out</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding (click)="finishClockingOut()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>{{shiftDate}}</h1>
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label stacked>Deliveries</ion-label>
+            <p>{{shift.deliveries.length}}</p>
+          </ion-col>
+          <ion-col>
+            <ion-label stacked># Cards</ion-label>
+            <p>{{creditCardCount}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label stacked>Total Cash</ion-label>
+            <p>${{totalCash}}</p>
+          </ion-col>
+          <ion-col>
+            <ion-label stacked># Checks</ion-label>
+            <p>{{checkCount}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <form [formGroup]="clockingOutForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label stacked>Calculated Tips</ion-label>
+          <p>${{takeHome}}</p>
+        </ion-col>
+        <ion-col>
+          <ion-label stacked>Actual Tips</ion-label>
+          <ion-datetime displayFormat="h:mm a" formControlName="actualTips"></ion-datetime>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label stacked>Clocked In</ion-label>
+          <ion-datetime displayFormat="h:mm a" formControlName="clockedIn"></ion-datetime>
+        </ion-col>
+        <ion-col>
+          <ion-label stacked>Clocked Out</ion-label>
+          <ion-datetime displayFormat="h:mm a" formControlName="clockedOut"></ion-datetime>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label stacked>Odometer Start</ion-label>
+          <ion-input type="number" placeholder="150000" formControlName="odometerStart"></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-label stacked>Odometer End</ion-label>
+          <ion-input type="number" placeholder="150000" formControlName="odometerEnd"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

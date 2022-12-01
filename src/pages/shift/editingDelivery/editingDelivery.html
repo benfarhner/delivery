@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="materialPrimary">
+    <ion-title *ngIf="isNew">New Delivery</ion-title>
+    <ion-title *ngIf="!isNew">Edit Delivery</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding (click)="saveDelivery()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="editingDeliveryForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label stacked>Order Total</ion-label>
+          <ion-input type="number" formControlName="total" autofocus></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-label>Comp Order</ion-label>
+          <ion-checkbox formControlName="isCompOrder"></ion-checkbox>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <fmc-announcement *ngIf="!anyPayments" icon-name="logo-usd" icon-color="materialPrimaryDark" text="No payments yet!"></fmc-announcement>
+  <ion-list *ngIf="anyPayments">
+    <ion-list-header>Payments</ion-list-header>
+    <ion-item *ngFor="let payment of delivery.payments">
+      <ion-icon item-left [name]="payment.methodIcon"></ion-icon>
+      {{payment.amountString}}
+      <ion-icon item-right name="md-create" (click)="editPayment(payment)"></ion-icon>
+      <ion-icon item-right name="md-trash" (click)="deletePayment(payment)"></ion-icon>
+    </ion-item>
+  </ion-list>
+  <ion-fab bottom right padding>
+    <button ion-fab (click)="addPayment()"><ion-icon name="md-add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

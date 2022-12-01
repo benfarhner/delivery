@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="materialPrimary">
+    <ion-title>New Shift</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="finishClockingIn()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="clockingInForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1>{{shiftDate}}</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label stacked>Clocked In</ion-label>
+          <ion-datetime displayFormat="h:mm a" formControlName="clockedIn" autofocus></ion-datetime>
+        </ion-col>
+        <ion-col>
+          <ion-label stacked>Odometer Start</ion-label>
+          <ion-input type="number" placeholder="150000" formControlName="odometerStart"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Alternatively, you can put these in when clocking out.</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

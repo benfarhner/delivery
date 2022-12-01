@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="materialPrimary">
+    <ion-title>Shift Summary</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding (click)="finishViewingSummary()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>{{shiftDate}}</h1>
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label stacked>Deliveries</ion-label>
+            <p>{{shift.deliveries.length}}</p>
+          </ion-col>
+          <ion-col>
+            <ion-label stacked>Take-home</ion-label>
+            <p>${{takeHome}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label stacked>Clock</ion-label>
+            <p>{{clockedIn}}&ndash;{{clockedOut}}</p>
+          </ion-col>
+          <ion-col>
+            <ion-label stacked>Time</ion-label>
+            <p>{{time}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label stacked>Odometer</ion-label>
+            <p>{{shift.odometerStart}}&ndash;{{shift.odometerEnd}}</p>
+          </ion-col>
+          <ion-col>
+            <ion-label stacked>Miles</ion-label>
+            <p>{{miles}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <fmc-announcement icon-name="md-thumbs-up" icon-color="materialPrimaryDark" text="Nice work!"></fmc-announcement>
+</ion-content>

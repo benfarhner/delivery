@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar color="materialPrimary">
+    <ion-title>Working</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding [navPush]="clockingOutState">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>{{shiftDate}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content class="contains-grid">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-label stacked>Deliveries</ion-label>
+                  <p>{{shift.deliveries.length}}</p>
+                </ion-col>
+                <ion-col>
+                  <ion-label stacked>Take-home</ion-label>
+                  <p>${{takeHome}}</p>
+                </ion-col>
+                <ion-col>
+                  <ion-label stacked>Average tip</ion-label>
+                  <p>${{averageTip}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h2>Deliveries</h2>
+        <fmc-announcement *ngIf="!anyDeliveries" icon-name="md-car" icon-color="materialPrimaryDark" text="No deliveries yet!"></fmc-announcement>
+        <ion-list *ngIf="anyDeliveries">
+          <ion-grid>
+            <ion-row ion-item *ngFor="let delivery of shift.deliveries">
+              <ion-col>${{delivery.total}}</ion-col>
+              <ion-col *ngIf="delivery.isCompOrder">Comp</ion-col>
+              <ion-col *ngIf="!delivery.isCompOrder">${{delivery.paid}}</ion-col>
+              <ion-col>${{delivery.tip}}</ion-col>
+              <ion-col><ion-icon name="md-create" (click)="editDelivery(delivery)"></ion-icon></ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab bottom right padding>
+    <button ion-fab (click)="addDelivery()"><ion-icon name="md-add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

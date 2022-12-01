@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="materialPrimary">
+    <ion-buttons left>
+      <button ion-button icon-only padding (click)="cancelPayment()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf="isNew">New Payment</ion-title>
+    <ion-title *ngIf="!isNew">Edit Payment</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding (click)="savePayment()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="editingPaymentForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label stacked>Paid</ion-label>
+          <ion-input formControlName="amount" autofocus></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-label stacked>Payment Method</ion-label>
+          <ion-select formControlName="method">
+            <ion-option value="1" selected="true">Credit Card</ion-option>
+            <ion-option value="2">Cash</ion-option>
+            <ion-option value="3">Check</ion-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
